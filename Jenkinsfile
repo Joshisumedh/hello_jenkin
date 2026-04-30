@@ -1,9 +1,5 @@
 pipeline {
-    agent any
-    
-    tools {
-        jdk 'JDK17' // This name must match the name you gave it in Global Tool Configuration
-    }
+    agent any 
 
     stages {
         stage('Compile') {
@@ -11,6 +7,11 @@ pipeline {
                 sh 'javac HelloWorld.java'
             }
         }
-        // ... rest of your stages
+
+        stage('Execute') {
+            steps {
+                sh 'java HelloWorld'
+            }
+        }
     }
 }
